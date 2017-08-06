@@ -14,6 +14,7 @@
 		200AFA581F37A18E008674AE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 200AFA561F37A18E008674AE /* LaunchScreen.storyboard */; };
 		200AFA631F37A18E008674AE /* TipCalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200AFA621F37A18E008674AE /* TipCalculatorTests.swift */; };
 		200AFA6E1F37A18E008674AE /* TipCalculatorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200AFA6D1F37A18E008674AE /* TipCalculatorUITests.swift */; };
+		200AFA7C1F37C826008674AE /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200AFA7B1F37C826008674AE /* SettingsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		200AFA691F37A18E008674AE /* TipCalculatorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TipCalculatorUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		200AFA6D1F37A18E008674AE /* TipCalculatorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipCalculatorUITests.swift; sourceTree = "<group>"; };
 		200AFA6F1F37A18E008674AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		200AFA7B1F37C826008674AE /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 			children = (
 				200AFA4D1F37A18E008674AE /* AppDelegate.swift */,
 				200AFA4F1F37A18E008674AE /* TipViewController.swift */,
+				200AFA7B1F37C826008674AE /* SettingsViewController.swift */,
 				200AFA511F37A18E008674AE /* Main.storyboard */,
 				200AFA541F37A18E008674AE /* Assets.xcassets */,
 				200AFA561F37A18E008674AE /* LaunchScreen.storyboard */,
@@ -261,6 +264,7 @@
 			files = (
 				200AFA501F37A18E008674AE /* TipViewController.swift in Sources */,
 				200AFA4E1F37A18E008674AE /* AppDelegate.swift in Sources */,
+				200AFA7C1F37C826008674AE /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

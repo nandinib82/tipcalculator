@@ -45,7 +45,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" id="UE2-eU-b0u">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="0.0" textAlignment="natural" minimumFontSize="17" id="UE2-eU-b0u">
                                 <rect key="frame" x="262" y="97" width="97" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
@@ -81,7 +81,13 @@
                             <outletCollection property="gestureRecognizers" destination="yfe-cq-8Nf" appends="YES" id="qUw-CO-BE1"/>
                         </connections>
                     </view>
-                    <navigationItem key="navigationItem" title="Tipsy" id="ees-a9-ITE"/>
+                    <navigationItem key="navigationItem" title="Tipsy" id="ees-a9-ITE">
+                        <barButtonItem key="rightBarButtonItem" title="Settings" id="6ZC-Pl-QfD">
+                            <connections>
+                                <segue destination="5eM-Tf-94O" kind="push" id="daR-x5-ia2"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="billField" destination="UE2-eU-b0u" id="o0N-Uz-9FN"/>
                         <outlet property="tipControl" destination="2dD-UK-UZ9" id="O2s-DW-Yr6"/>
@@ -97,6 +103,21 @@
                 </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="537.5" y="154.5"/>
+        </scene>
+        <!--Settings View Controller-->
+        <scene sceneID="cju-9Y-hiS">
+            <objects>
+                <viewController id="5eM-Tf-94O" customClass="SettingsViewController" customModule="TipCalculator" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Wx2-6n-x6h">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="wfb-S2-ccP"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1Ja-gi-s1b" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="976" y="155"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="1XG-hD-Rtx">
