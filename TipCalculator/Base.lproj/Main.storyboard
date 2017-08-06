@@ -31,7 +31,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="mXe-pT-iir">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="0.0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="mXe-pT-iir">
                                 <rect key="frame" x="288" y="159" width="71" height="41"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -45,7 +45,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="0.0" textAlignment="natural" minimumFontSize="17" id="UE2-eU-b0u">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="0.0" textAlignment="right" minimumFontSize="17" id="UE2-eU-b0u">
                                 <rect key="frame" x="262" y="97" width="97" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
@@ -67,7 +67,7 @@
                                     <action selector="calculateTip:" destination="BYZ-38-t0r" eventType="valueChanged" id="Jaz-Rg-Z0d"/>
                                 </connections>
                             </segmentedControl>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="x2z-6W-0Ay">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="0.0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="x2z-6W-0Ay">
                                 <rect key="frame" x="288" y="226" width="71" height="41"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -82,7 +82,8 @@
                         </connections>
                     </view>
                     <navigationItem key="navigationItem" title="Tipsy" id="ees-a9-ITE">
-                        <barButtonItem key="rightBarButtonItem" title="Settings" id="6ZC-Pl-QfD">
+                        <barButtonItem key="rightBarButtonItem" title="⚙" id="6ZC-Pl-QfD">
+                            <color key="tintColor" red="0.030161583796143532" green="0.53873950242996216" blue="0.9623146653175354" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <segue destination="5eM-Tf-94O" kind="push" id="daR-x5-ia2"/>
                             </connections>
@@ -104,20 +105,44 @@
             </objects>
             <point key="canvasLocation" x="537.5" y="154.5"/>
         </scene>
-        <!--Settings View Controller-->
+        <!--Preferences-->
         <scene sceneID="cju-9Y-hiS">
             <objects>
                 <viewController id="5eM-Tf-94O" customClass="SettingsViewController" customModule="TipCalculator" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Wx2-6n-x6h">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Default Tip Percentage" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="S3w-XD-BBF">
+                                <rect key="frame" x="99" y="104" width="176" height="41"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="KYw-nI-T9I">
+                                <rect key="frame" x="43" y="176" width="288" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="15%"/>
+                                    <segment title="18%"/>
+                                    <segment title="20%"/>
+                                </segments>
+                                <connections>
+                                    <action selector="defaultTipSelected:" destination="5eM-Tf-94O" eventType="valueChanged" id="Wv3-bC-Yod"/>
+                                </connections>
+                            </segmentedControl>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="wfb-S2-ccP"/>
+                    <navigationItem key="navigationItem" title="Preferences" id="wfb-S2-ccP"/>
+                    <connections>
+                        <outlet property="tipDefaultControl" destination="KYw-nI-T9I" id="lvu-29-B8N"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Ja-gi-s1b" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="976" y="155"/>
+            <point key="canvasLocation" x="975.5" y="154.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="1XG-hD-Rtx">
