@@ -17,19 +17,40 @@ class TipViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        let defaults = UserDefaults.standard
+        let intValue = defaults.integer(forKey:"Default Tip Percentage")
+        
+        tipControl.selectedSegmentIndex = intValue
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        let defaults = UserDefaults.standard
+        let intValue = defaults.integer(forKey:"Default Tip Percentage")
+        
+        if intValue != tipControl.selectedSegmentIndex
+        {
+            tipControl.selectedSegmentIndex = intValue
+            calculateTipHelper()
+        }
+    }
+
 
     @IBAction func onTap(_ sender: Any) {
        view.endEditing(true)
     }
 
     @IBAction func calculateTip(_ sender: Any)
+    {
+        calculateTipHelper()
+        
+    }
+        
+    func calculateTipHelper()
     {
         let billAmount = Double(billField.text!) ?? 0
         let tipPercentageIndex = tipControl.selectedSegmentIndex
@@ -38,7 +59,6 @@ class TipViewController: UIViewController {
         let tip : Double = billAmount * tipPercent / 100
         tipLabel.text = String(tip)
         totalAmountLabel.text = String(billAmount + tip)
-        
     }
 }
 
