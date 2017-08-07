@@ -27,13 +27,18 @@ class SettingsViewController: UIViewController {
         let intValue = defaults.integer(forKey:"Default Tip Percentage")
         
         tipDefaultControl.selectedSegmentIndex = intValue
+        
 
     }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    
+    
     
 
     /*

@@ -15,12 +15,23 @@ class TipViewController: UIViewController {
     @IBOutlet weak var tipLabel: UILabel!
     @IBOutlet weak var totalAmountLabel: UILabel!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        let defaults = UserDefaults.standard
-        let intValue = defaults.integer(forKey:"Default Tip Percentage")
+    override func viewDidLoad()
+    {
+        NotificationCenter.default.addObserver(self, selector: #selector(TipViewController.localeChanged(notif:)), name:  NSLocale.currentLocaleDidChangeNotification, object: nil)
         
-        tipControl.selectedSegmentIndex = intValue
+        let defaults = UserDefaults.standard
+        let billAmount = defaults.integer(forKey:"Bill Amount")
+        if billAmount != 0
+        {
+            billField.text = String(billAmount)
+        }
+
+    }
+    
+    func localeChanged(notif: NSNotification)
+    {
+        // locale (region format) in Settings was changed, so we are notified here
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -29,16 +40,29 @@ class TipViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        billField.becomeFirstResponder()
         let defaults = UserDefaults.standard
         let intValue = defaults.integer(forKey:"Default Tip Percentage")
         
         if intValue != tipControl.selectedSegmentIndex
         {
             tipControl.selectedSegmentIndex = intValue
-            calculateTipHelper()
         }
-    }
+        
+        calculateTipHelper()
 
+    }
+    
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        let billAmount = Double(billField.text!) ?? 0
+        
+        let defaults = UserDefaults.standard
+        defaults.set(billAmount, forKey: "Bill Amount")
+        defaults.synchronize()
+
+    }
+    
 
     @IBAction func onTap(_ sender: Any) {
        view.endEditing(true)
@@ -47,7 +71,6 @@ class TipViewController: UIViewController {
     @IBAction func calculateTip(_ sender: Any)
     {
         calculateTipHelper()
-        
     }
         
     func calculateTipHelper()
@@ -57,8 +80,21 @@ class TipViewController: UIViewController {
         let tipPercentage = [15, 18, 20]
         let tipPercent : Double = Double(tipPercentage[tipPercentageIndex])
         let tip : Double = billAmount * tipPercent / 100
-        tipLabel.text = String(tip)
-        totalAmountLabel.text = String(billAmount + tip)
+        
+        let formatter = NumberFormatter()
+        formatter.locale = Locale.current
+        formatter.numberStyle = .currency
+        if let formattedTipAmount = formatter.string(from: tip as NSNumber)
+        {
+            tipLabel.text = "\(formattedTipAmount)"
+        }
+        
+        let totalBillAmount = billAmount + tip
+        if let formattedBillAmount = formatter.string(from: totalBillAmount as NSNumber)
+        {
+            totalAmountLabel.text = "\(formattedBillAmount)"
+        }
+
     }
 }
 
