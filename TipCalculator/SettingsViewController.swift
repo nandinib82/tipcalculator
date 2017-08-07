@@ -33,11 +33,14 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         pickerData = ["Light Theme", "DarkTheme"]
         
         let defaults = UserDefaults.standard
-        let intValue = defaults.integer(forKey:"Default Tip Percentage")
+        let defaultTipPercentValue = defaults.integer(forKey:"Default Tip Percentage")
         
-        tipDefaultControl.selectedSegmentIndex = intValue
+        let defaultColorThemeIndex = defaults.integer(forKey:"Color Theme")
+        self.themePickerView.selectRow(defaultColorThemeIndex, inComponent: 0, animated: false)
         
-
+    
+        tipDefaultControl.selectedSegmentIndex = defaultTipPercentValue
+        
     }
     
 
@@ -63,7 +66,13 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     }
     
     
-    
+    func pickerView(_: UIPickerView, didSelectRow row: Int, inComponent: Int)
+    {
+        let defaults = UserDefaults.standard
+        defaults.set(row, forKey: "Color Theme")
+        defaults.synchronize()
+        
+    }
     
 
     /*
