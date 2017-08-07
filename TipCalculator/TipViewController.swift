@@ -41,6 +41,8 @@ class TipViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         billField.becomeFirstResponder()
+        
+        updateTheme()
         let defaults = UserDefaults.standard
         let intValue = defaults.integer(forKey:"Default Tip Percentage")
         
@@ -77,7 +79,7 @@ class TipViewController: UIViewController {
     {
         let billAmount = Double(billField.text!) ?? 0
         let tipPercentageIndex = tipControl.selectedSegmentIndex
-        let tipPercentage = [15, 18, 20]
+        let tipPercentage = [15, 18, 20, 22]
         let tipPercent : Double = Double(tipPercentage[tipPercentageIndex])
         let tip : Double = billAmount * tipPercent / 100
         
@@ -94,7 +96,18 @@ class TipViewController: UIViewController {
         {
             totalAmountLabel.text = "\(formattedBillAmount)"
         }
-
+    }
+    
+    func updateTheme()
+    {
+        let defaults = UserDefaults.standard
+        let themeIndex = defaults.integer(forKey:"Color Theme")
+   
+        let currentTheme = Theme(theme: Theme.ThemeStyles(rawValue: themeIndex as Theme.ThemeStyles.RawValue)!)
+        view.backgroundColor = currentTheme.backgroundColor
+        tipLabel.textColor = currentTheme.labelTextColor
+        totalAmountLabel.textColor = currentTheme.labelTextColor
+        
     }
 }
 
