@@ -8,9 +8,13 @@
 
 import UIKit
 
-class SettingsViewController: UIViewController {
+class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
 
     @IBOutlet weak var tipDefaultControl: UISegmentedControl!
+    
+    @IBOutlet weak var themePickerView: UIPickerView!
+    
+    var pickerData: [String] = [String]()
     
     @IBAction func defaultTipSelected(_ sender: Any)
     {
@@ -23,6 +27,11 @@ class SettingsViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.themePickerView.dataSource = self
+        self.themePickerView.delegate = self
+        
+        pickerData = ["Light Theme", "DarkTheme"]
+        
         let defaults = UserDefaults.standard
         let intValue = defaults.integer(forKey:"Default Tip Percentage")
         
@@ -35,6 +44,22 @@ class SettingsViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    // The number of columns of data
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    // The number of rows of data
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int
+    {
+        return pickerData.count
+    }
+    
+    // The data to return for the row and component (column) that's being passed in
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return pickerData[row]
     }
     
     
