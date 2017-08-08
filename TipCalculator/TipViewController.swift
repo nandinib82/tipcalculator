@@ -15,6 +15,11 @@ class TipViewController: UIViewController {
     @IBOutlet weak var tipLabel: UILabel!
     @IBOutlet weak var totalAmountLabel: UILabel!
     
+    @IBOutlet weak var bottomView: UIView!
+    @IBOutlet weak var topView: UIView!
+    @IBOutlet weak var plusButton: UIButton!
+    @IBOutlet weak var equalButton: UIButton!
+    
     override func viewDidLoad()
     {
         NotificationCenter.default.addObserver(self, selector: #selector(TipViewController.localeChanged(notif:)), name:  NSLocale.currentLocaleDidChangeNotification, object: nil)
@@ -96,6 +101,13 @@ class TipViewController: UIViewController {
         {
             totalAmountLabel.text = "\(formattedBillAmount)"
         }
+        
+        self.bottomView.alpha = 0
+        UIView.animate(withDuration: 0.2, animations: {
+            // This causes first view to fade in and second view to fade out
+            self.bottomView.alpha = 1
+        })
+
     }
     
     func updateTheme()
@@ -108,6 +120,17 @@ class TipViewController: UIViewController {
         tipLabel.textColor = currentTheme.labelTextColor
         totalAmountLabel.textColor = currentTheme.labelTextColor
         
+        billField.keyboardAppearance = currentTheme.keyboardAppearance
+        
+        billField.textColor = currentTheme.textColor
+        
+        tipControl.tintColor = currentTheme.tintColor
+        plusButton.tintColor = currentTheme.buttonColor
+        equalButton.tintColor = currentTheme.tintColor
+        
+        
+        
     }
-}
+    
+  }
 
