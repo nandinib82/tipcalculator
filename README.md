@@ -25,6 +25,7 @@ The following **additional** features are implemented:
 - [X] Clear Button
 - [X] Added UIPickerView Control
 - [X] Dark and Light Theme Handling 
+- [X] Theme class
 
 ## Video Walkthrough 
 
@@ -47,7 +48,7 @@ Within the main.storyboard xml, the TipViewController is associated via an ID wi
 
 Question 2: "Swift uses [Automatic Reference Counting](https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/AutomaticReferenceCounting.html#//apple_ref/doc/uid/TP40014097-CH20-ID49) (ARC), which is not a garbage collector, to manage memory. Can you explain how you can get a strong reference cycle for closures? (There's a section explaining this concept in the link, how would you summarize as simply as possible?)"
 
-**Answer:** [Enter your answer here in a paragraph or two].
+**Answer:** Strong reference cycles are created when a class instance holds a strong reference to another class instance while that class instance in turns holds a reference to the former class, resulting in a cyclic reference. In case of a closure, if a class has a closure as a property, then the class instance will hold a strong reference to the closure stored in the property. The closure implicitly captures properties of the class, and thus a strong reference to the class instance. This will result in strong reference cycle. 
 
 
 ## License
