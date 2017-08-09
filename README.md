@@ -40,7 +40,10 @@ As part of your pre-work submission, please reflect on the app and answer the fo
 
 **Question 1**: "What are your reactions to the iOS app development platform so far? How would you describe outlets and actions to another developer? Bonus: any idea how they are being implemented under the hood? (It might give you some ideas if you right-click on the Storyboard and click Open As->Source Code")
 
-**Answer:** 
+**Answer:** For someone who has never used the Swift or iOS platform, this was a fairly easy platform to ramp up on with reasonable documentation and great tutorials. 
+To me outlets are a way to reference the View UI objects from the Controller. Basically the allow the plumbing of the view objects properties so that the controller can either react to changes of the proerties or manipulate the view object properties. Actions are effectively events that are generated in response to a user interaction with the UI objects. 
+
+Within the main.storyboard xml, the TipViewController is associated via an ID with the view as a target for the view. Within the UI object markup code eg the segmentSelector, the controller object is set as the destination for the event, so that when the event is generated, it is routed to the right method within the Controller. 
 
 Question 2: "Swift uses [Automatic Reference Counting](https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/AutomaticReferenceCounting.html#//apple_ref/doc/uid/TP40014097-CH20-ID49) (ARC), which is not a garbage collector, to manage memory. Can you explain how you can get a strong reference cycle for closures? (There's a section explaining this concept in the link, how would you summarize as simply as possible?)"
 
